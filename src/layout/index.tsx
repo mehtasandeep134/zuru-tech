@@ -33,9 +33,9 @@ function MainLayout(props: any) {
           mode="inline"
           onClick={handleMenuClick}
         >
-          {StaticLabels.menuCards.map((item: any) => (
-            <Menu.Item key={item} icon={<PieChartOutlined />}>
-              {item}
+          {StaticLabels.menuCards.map((items: any) => (
+            <Menu.Item key={items} icon={<PieChartOutlined />}>
+              {items}
             </Menu.Item>
           ))}
         </Menu>

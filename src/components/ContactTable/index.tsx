@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import { Table } from 'antd';
 import './style.scss';
 import { CardTypes } from 'components/ContactCard';
 
 export default function HandicapperCard({ data }: CardTypes) {
+  const [selectedRows, setSelectedRows] = useState(data);
   const dataSource = Object.freeze([
     {
       key: '1',
@@ -37,6 +38,12 @@ export default function HandicapperCard({ data }: CardTypes) {
       key: 'address',
     },
   ];
+  const rowSelection = {
+    selectedRows,
+    onChange: (selectedRows) => {
+      setSelectedRows({ selectedRows });
+    },
+  };
 
-  return <Table dataSource={dataSource} columns={columns} />;
+  return <Table dataSource={dataSource} columns={columns} rowSelection={rowSelection} />;
 }

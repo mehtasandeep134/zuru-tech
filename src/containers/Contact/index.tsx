@@ -10,7 +10,7 @@ const cardData = [
     phone: true,
     company: 5,
     address: '46491fab-9df6-4533-8fa2-9f3e78dfb513.png',
-    id: '6082f82dadf18c211821b544',
+    id: '6082f82dadf18c211821b554',
   },
   {
     fullName: 'Deposit Required',
@@ -29,11 +29,13 @@ export const Contact = () => {
 
   return (
     <>
-      <Card className="main-content" bordered={false}>
-        <ContactCard data={data} />
-      </Card>
-      <Card className="main-content" bordered={false}>
-        <ContactTable data={data} />
+      <Card bordered={false}>
+        <div>
+          <ContactTable data={data} />
+        </div>
+        <div>
+          <ContactCard data={data} />
+        </div>
       </Card>
     </>
   );
