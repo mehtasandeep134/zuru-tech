@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
-import ContactCard from 'components/ContactCard';
 import ContactTable from 'components/ContactTable';
 const cardData = [
   {
@@ -32,9 +31,6 @@ export const Contact = () => {
       <Card bordered={false}>
         <div>
           <ContactTable data={data} />
-        </div>
-        <div>
-          <ContactCard data={data} />
         </div>
       </Card>
     </>
