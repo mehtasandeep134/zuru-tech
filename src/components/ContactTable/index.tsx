@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import './style.scss';
@@ -68,7 +67,6 @@ export default function HandicapperCard({ data }: any) {
 
       {selectedRows && (
         <Col span={8} key={selectedRows.id}>
-          {console.log(selectedRows)}
           <Card className="ContactCard">
             <Row>
               <Col className="imageCenter">
