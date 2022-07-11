@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { renderRoutes } from 'react-router-config';
 import { Layout, Menu } from 'antd';
-import { DesktopOutlined, PieChartOutlined } from '@ant-design/icons';
+import { PieChartOutlined } from '@ant-design/icons';
 import { useLocation } from 'react-router-dom';
-import { PAGE } from 'utils/enum';
+import StaticLabels from '../data/contacts.json';
 import './style.scss';
 
 const { Header, Content, Sider } = Layout;
@@ -33,19 +33,15 @@ function MainLayout(props: any) {
           mode="inline"
           onClick={handleMenuClick}
         >
-          <Menu.Item key={PAGE.HOME} icon={<DesktopOutlined />}>
-            Home
-          </Menu.Item>
-          <Menu.Item key={PAGE.CHAT} icon={<PieChartOutlined />}>
-            Chat
-          </Menu.Item>
-          <Menu.Item key={PAGE.CONTACTS} icon={<PieChartOutlined />}>
-            Contacts
-          </Menu.Item>
+          {StaticLabels.menuCards.map((items: any) => (
+            <Menu.Item key={items} icon={<PieChartOutlined />}>
+              {items}
+            </Menu.Item>
+          ))}
         </Menu>
       </Sider>
       <Layout className={`site-content-wrapper ${collapsed ? 'ml-80' : 'ml-200'}`}>
-        <Header className="site-header">Task Detials ZURU</Header>
+        <Header className="site-header">{StaticLabels.header}</Header>
         <Content className="site-content">{renderRoutes(route.routes)}</Content>
       </Layout>
     </Layout>
