@@ -1,0 +1,40 @@
+.site-layout {
+  min-height: 100vh;
+  .site-content-wrapper {
+    &.ml-200 {
+      transition: all 0.2s;
+      margin-left: 200px;
+    }
+    &.ml-80 {
+      transition: all 0.2s;
+      margin-left: 80px;
+    }
+  }
+  .site-sidebar {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+  }
+  .site-header {
+    background: #fff;
+    box-shadow: 2px 2px 2px #eeeeee;
+    z-index: 15;
+    height: 50px;
+    padding: 35px;
+    line-height: 0;
+    margin-top: 5px;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  margin-top: 15px;
+  img {
+    width: 40% !important;
+    height: 100% !important;
+  }
+}

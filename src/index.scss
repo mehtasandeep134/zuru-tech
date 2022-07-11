@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+@import 'react-toastify/dist/ReactToastify.css';
+
+.main-content {
+  margin: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dropdownPosition {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.filterDropdown {
+  margin-bottom: 25px;
+  width: 100px;
+}
