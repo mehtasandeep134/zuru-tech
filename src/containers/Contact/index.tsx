@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
-import BetCard from 'components/ContactCard';
-import HandicapperCard from 'components/ContactTable';
+import ContactCard from 'components/ContactCard';
+import ContactTable from 'components/ContactTable';
 const cardData = [
   {
     fullName: 'Deposit Required',
@@ -28,14 +28,14 @@ export const Contact = () => {
   const [data, setData] = useState(cardData);
 
   return (
-    <div>
+    <>
       <Card className="main-content" bordered={false}>
-        <BetCard data={data} />
+        <ContactCard data={data} />
       </Card>
       <Card className="main-content" bordered={false}>
-        <HandicapperCard data={data} />
+        <ContactTable data={data} />
       </Card>
-    </div>
+    </>
   );
 };
 

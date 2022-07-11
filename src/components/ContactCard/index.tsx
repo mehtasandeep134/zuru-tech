@@ -6,7 +6,7 @@ import './style.scss';
 export interface CardTypes {
   data: any;
 }
-export default function BetCard({ data }: CardTypes) {
+export default function ContactCard({ data }: CardTypes) {
   return (
     <>
       {data.length > 0 && (
