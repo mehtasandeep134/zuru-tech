@@ -1,12 +1,11 @@
 import Contact from 'pages/Contact';
 import { PAGE } from 'utils/enum';
-import ContactDetails from 'containers/Table';
 
 export const routesData = [
   {
     path: PAGE.HOME,
     exact: true,
-    component: ContactDetails,
+    component: Contact,
   },
   {
     path: PAGE.CHAT,
@@ -16,6 +15,6 @@ export const routesData = [
   {
     path: PAGE.CONTACTS,
     exact: true,
-    component: ContactDetails,
+    component: Contact,
   },
 ];

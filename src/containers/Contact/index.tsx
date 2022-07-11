@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
 import BetCard from 'components/ContactCard';
+import HandicapperCard from 'components/ContactTable';
 const cardData = [
   {
     cardTitle: 'test 2 x $10 Free Bets - No Deposit Required',
@@ -28,6 +29,9 @@ export const Contact = () => {
     <div>
       <Card className="main-content" bordered={false}>
         <BetCard data={data} />
+      </Card>
+      <Card className="main-content" bordered={false}>
+        <HandicapperCard data={data} />
       </Card>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
-import ContactDetails from 'containers/Table';
+import Contact from 'containers/Contact';
 
 function ContactDetailsPage() {
-  return <ContactDetails />;
+  return <Contact />;
 }
 
 export default ContactDetailsPage;
