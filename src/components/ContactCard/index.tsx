@@ -20,6 +20,7 @@ export default function BetCard({ data }: CardTypes) {
                       alt="BetSite"
                       className="betsiteimage"
                       src={process.env.REACT_APP_API_BASE_IMAGE_URL + obj?.siteImage}
+                      loading="lazy"
                     />
                   </Col>
                 </Row>

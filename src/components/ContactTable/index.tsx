@@ -5,7 +5,7 @@ import './style.scss';
 import { CardTypes } from 'components/ContactCard';
 
 export default function HandicapperCard({ data }: CardTypes) {
-  const dataSource = [
+  const dataSource = Object.freeze([
     {
       key: '1',
       name: 'Mike',
@@ -18,7 +18,7 @@ export default function HandicapperCard({ data }: CardTypes) {
       age: 42,
       address: '10 Downing Street',
     },
-  ];
+  ]);
 
   const columns = [
     {
