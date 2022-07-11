@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './style.scss';
 import { Card, Row, Col, Table } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 import Text from 'antd/lib/typography/Text';
 const { Meta } = Card;
 
@@ -79,17 +80,23 @@ export default function HandicapperCard({ data }: any) {
                   width={200}
                   loading="lazy"
                 />
+                <EditOutlined style={{ fontSize: '26px' }} />
               </Col>
             </Row>
             <div className="mt-15">
               <Meta title={selectedRows.fullName} />
               <Text>{selectedRows.title} </Text>
               <div className="mt-15 termsAndConditionText">
-                <div> Full name: {selectedRows.fullName}</div>
-                <div> Email: {selectedRows.email}</div>
-                <div> Phone: {selectedRows.phone}</div>
-                <div> Company: {selectedRows.company}</div>
-                <div> Address: {selectedRows.address}</div>
+                <div> Full name: </div>
+                <textarea defaultValue={selectedRows.fullName} />
+                <div> Email: </div>
+                <textarea defaultValue={selectedRows.fullName} />
+                <div> Phone: </div>
+                <textarea defaultValue={selectedRows.fullName} />
+                <div> Company: </div>
+                <textarea defaultValue={selectedRows.fullName} />
+                <div> Address: </div>
+                <textarea defaultValue={selectedRows.fullName} />
               </div>
             </div>
           </Card>
