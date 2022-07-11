@@ -50,6 +50,13 @@ export default function HandicapperCard({ data }: any) {
 
   const Expander = (props) => <span>Test expander</span>;
 
+  const handleChangeFor = (propertyName) => (event) => {
+    setSelectedRows((contact) => ({
+      ...contact,
+      [propertyName]: event.target.value,
+    }));
+  };
+
   return (
     <>
       <Table
@@ -88,9 +95,15 @@ export default function HandicapperCard({ data }: any) {
               <Text>{selectedRows.title} </Text>
               <div className="mt-15 termsAndConditionText">
                 <div> Full name: </div>
-                <textarea defaultValue={selectedRows.fullName} />
+                <textarea
+                  defaultValue={selectedRows.fullName}
+                  onChange={handleChangeFor('firstName')}
+                />
                 <div> Email: </div>
-                <textarea defaultValue={selectedRows.fullName} />
+                <textarea
+                  defaultValue={selectedRows.fullName}
+                  onChange={handleChangeFor('email')}
+                />
                 <div> Phone: </div>
                 <textarea defaultValue={selectedRows.fullName} />
                 <div> Company: </div>
