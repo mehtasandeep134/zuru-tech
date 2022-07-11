@@ -78,6 +78,7 @@ export default function HandicapperCard({ data }: any) {
                   src={
                     'https://e7.pngegg.com/pngimages/246/960/png-clipart-circle-7-logo-illustration-logo-logo-design-round-business-name-slogan-here-advertisement-free-logo-design-template-text.png'
                   }
+                  width={200}
                   loading="lazy"
                 />
               </Col>
