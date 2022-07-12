@@ -22,14 +22,14 @@ const ContactCard = () => {
               <Text>{selectedCard.title} </Text>
               <div className="mt-15 termsAndConditionText">
                 <div className="container-align">
-                  Full name: <div>{selectedCard.name ?? 'ZOHO'}</div>
+                  Full name: <div>{selectedCard.name ?? 'Zuru'}</div>
                 </div>
                 <div className="container-align">
                   Email:
-                  <div>{selectedCard.name ?? 'zoho@gmail.com'}</div>
+                  <div>{selectedCard.name ?? 'zuru@gmail.com'}</div>
                 </div>
                 <div className="container-align">
-                  Company: <div>{selectedCard?.company ?? 'ZOHO'}</div>{' '}
+                  Company: <div>{selectedCard?.company ?? 'Zuru'}</div>{' '}
                 </div>
                 <div className="container-align">
                   {' '}

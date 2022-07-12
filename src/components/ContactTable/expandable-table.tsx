@@ -23,7 +23,7 @@ const dataSource: IMyTableData[] = [
     id: '1',
     name: 'Mo Salah',
     email: 'MoSalah@gmail.com',
-    company: 'Zoho',
+    company: 'Zuru',
     address: '1 west side, New York, USA',
   },
   {
