@@ -10,6 +10,7 @@ import { ColumnProps } from 'antd/lib/table';
 import { useCard } from './my-context';
 import Highlighter from 'react-highlight-words';
 import 'antd/dist/antd.css';
+import { create_UUID } from 'utils/helper';
 
 interface IMyTableData {
   id: string | number;
@@ -179,7 +180,7 @@ const EditableTable: React.FC = () => {
   const handleAdd = () => {
     // const { dataSource } = tableData;
     const newData = {
-      id: '2',
+      id: create_UUID(),
       name: 'Bobby Firmino',
       email: 'bobby@gmail.com',
       company: 'Facebook',
