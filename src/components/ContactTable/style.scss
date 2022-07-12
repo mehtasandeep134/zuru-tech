@@ -12,9 +12,14 @@
 .avatar {
   display: flex;
   justify-content: center;
+  text-align: center;
   .avatar-name {
-    height: 50px;
-    width: 50px;
+    h2{
+      position: relative;
+      top: 0.6rem;
+    }
+    height: 60px;
+    width: 60px;
     font-size: 10px;
   }
 }

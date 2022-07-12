@@ -15,7 +15,7 @@ const ContactCard = () => {
           <Card className="contactCard">
             <div className="avatar">
               <Avatar className="avatar-name" size="large">
-                {avatarCapsProviders(selectedCard?.name) || 'Zuru'}
+                <h2>{avatarCapsProviders(selectedCard?.name) || 'Zuru'}</h2>
               </Avatar>
             </div>
             <div className="mt-15">

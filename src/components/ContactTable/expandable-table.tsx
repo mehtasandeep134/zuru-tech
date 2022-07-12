@@ -343,6 +343,7 @@ const EditableTable: React.FC = () => {
     const index = newData.findIndex((item) => row.id === item.id);
     const item = newData[index];
     newData.splice(index, 1, { ...item, ...row });
+    localStorage.setItem('storedData', JSON.stringify(newData));
     setTableData(newData);
   };
 
