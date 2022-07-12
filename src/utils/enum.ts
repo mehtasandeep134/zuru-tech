@@ -1,5 +1,5 @@
 export enum PAGE {
   CHAT = '/chat',
-  HOME = '/home',
+  HOME = '/',
   CONTACTS = '/contacts',
 }
