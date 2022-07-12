@@ -200,7 +200,7 @@ const EditableTable: React.FC = () => {
   const columns: ColumnProps<IMyTableData>[] = [
     {
       dataIndex: 'name',
-      title: '',
+      title: 'Name',
       ...getColumnSearchProps('name'),
     },
     {
