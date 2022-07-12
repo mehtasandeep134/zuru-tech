@@ -157,11 +157,14 @@ const EditableTable: React.FC = () => {
     for (let index = 0; index < tableData.length; index++) {
       setTotal(newData, index);
     }
-    setTableData(newData);
+    const storedData = JSON.parse(localStorage.getItem('storedData'));
+    setTableData(storedData || newData);
   }, []);
 
   const handleDelete = (key) => {
-    setTableData(tableData.filter((items) => items.id !== key));
+    const filteredData = tableData.filter((items) => items.id !== key);
+    localStorage.setItem('storedData', JSON.stringify(filteredData));
+    setTableData(filteredData);
   };
 
   const handleModal = (iDD) => {
@@ -194,7 +197,7 @@ const EditableTable: React.FC = () => {
   };
 
   const onConfirm = () => {
-    console.log(tableData);
+    localStorage.setItem('storedData', JSON.stringify(tableData));
   };
 
   const columns: ColumnProps<IMyTableData>[] = [
