@@ -247,7 +247,7 @@ const EditableTable: React.FC = () => {
   return (
     <div style={{ padding: 20 }}>
       <Button onClick={handleAdd} type="primary" style={{ marginBottom: 16 }}>
-        Add a row
+        Add Contact
       </Button>
       <Table
         rowKey="id"
