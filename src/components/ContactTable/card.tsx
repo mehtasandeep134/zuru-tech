@@ -1,46 +1,40 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import './style.scss';
-import { Row, Col, Table, Card } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import { Col, Card, Avatar } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import Meta from 'antd/lib/card/Meta';
 import { useCard } from './my-context';
+import './style.scss';
 
 const ContactCard = () => {
   const { selectedCard } = useCard() as any;
   return (
     <>
-      {console.log(selectedCard, 'selectedRoe')}
       {selectedCard && (
-        <Col span={8} key={selectedCard.id}>
-          <Card className="ContactCard">
-            <Row>
-              <Col className="imageCenter">
-                <img
-                  alt="BetSite"
-                  className="betsiteimage"
-                  src={
-                    'https://e7.pngegg.com/pngimages/246/960/png-clipart-circle-7-logo-illustration-logo-logo-design-round-business-name-slogan-here-advertisement-free-logo-design-template-text.png'
-                  }
-                  width={200}
-                  loading="lazy"
-                />
-                <EditOutlined style={{ fontSize: '26px' }} />
-              </Col>
-            </Row>
+        <Col xs={12} lg={8} key={selectedCard.id}>
+          <Card className="contactCard">
+            <div className="avatar">
+              <Avatar className="avatar-name" size="large">
+                {selectedCard?.name ?? 'ZoHO'}
+              </Avatar>
+            </div>
             <div className="mt-15">
-              <Meta title={selectedCard.name} />
+              <Meta className="mt-15" title={selectedCard.name} />
               <Text>{selectedCard.title} </Text>
               <div className="mt-15 termsAndConditionText">
-                <div> Full name: </div>
-                <div>{selectedCard.name}</div>
-                <div> Email: </div>
-                <div>{selectedCard.name}</div>
-                <div> Phone: </div>
-                <div> Company: </div>
-                <div> Address: </div>
+                <div className="container-align">
+                  Full name: <div>{selectedCard.name ?? 'ZOHO'}</div>
+                </div>
+                <div className="container-align">
+                  Email:
+                  <div>{selectedCard.name ?? 'zoho@gmail.com'}</div>
+                </div>
+                <div className="container-align">
+                  Company: <div>{selectedCard?.company ?? 'ZOHO'}</div>{' '}
+                </div>
+                <div className="container-align">
+                  {' '}
+                  Address: <div>{selectedCard?.address ?? 'Shyamal cross road'}</div>{' '}
+                </div>
               </div>
             </div>
           </Card>

@@ -13,23 +13,39 @@ import { useCard } from './my-context';
 interface IMyTableData {
   id: string;
   name: string;
-  goals: number;
-  assists: number;
-  totalCount?: number;
+  email: string;
+  company: string;
+  address: string;
 }
 
 const dataSource: IMyTableData[] = [
   {
     id: '1',
     name: 'Mo Salah',
-    goals: 24,
-    assists: 10,
+    email: 'MoSalah@gmail.com',
+    company: 'Zoho',
+    address: '1 west side, New York, USA',
   },
   {
     id: '2',
     name: 'Bobby Firmino',
-    goals: 11,
-    assists: 13,
+    email: 'Bobby@gmail.com',
+    company: 'BitOnTree',
+    address: '2 west sside, Cali USA',
+  },
+  {
+    id: '3',
+    name: 'Viral Firmino',
+    email: 'Viral@gmail.com',
+    company: 'Google',
+    address: '3 west sside, Cali USA',
+  },
+  {
+    id: '4',
+    name: 'Karan Firmino',
+    email: 'Karan@gmail.com',
+    company: 'Nasa',
+    address: '4 west sside, Cali USA',
   },
 ];
 
@@ -158,8 +174,9 @@ const EditableTable: React.FC = () => {
     const newData = {
       id: '2',
       name: 'Bobby Firmino',
-      goals: 11,
-      assists: 13,
+      email: 'bobby@gmail.com',
+      company: 'Facebook',
+      address: 'Cali 4 west side',
     };
     setTableData([...tableData, newData]);
   };
@@ -187,26 +204,26 @@ const EditableTable: React.FC = () => {
       ...getColumnSearchProps('name'),
     },
     {
-      dataIndex: 'goals',
-      title: 'Goals',
+      dataIndex: 'company',
+      title: 'Company',
       render: (text, record, index) => (
-        <Input value={text} onChange={onInputChange('goals', index)} />
+        <Input value={text} onChange={onInputChange('company', index)} />
       ),
-      ...getColumnSearchProps('goals'),
+      ...getColumnSearchProps('company'),
     },
     {
-      dataIndex: 'assists',
-      title: 'Assists',
+      dataIndex: 'address',
+      title: 'Address',
       render: (text, record, index) => (
-        <Input value={text} onChange={onInputChange('assists', index)} />
+        <Input value={text} onChange={onInputChange('address', index)} />
       ),
-      ...getColumnSearchProps('assists'),
+      ...getColumnSearchProps('address'),
     },
     {
-      dataIndex: 'totalCount',
-      title: 'Total',
+      dataIndex: 'email',
+      title: 'Email',
       render: (text, _record, _index) => <h4>{text}</h4>,
-      ...getColumnSearchProps('totalCount'),
+      ...getColumnSearchProps('email'),
     },
     {
       title: 'operation',
@@ -246,7 +263,7 @@ const EditableTable: React.FC = () => {
           };
         }}
       />
-      <div className="action-btn">
+      <div className="action-btn mt-15">
         <Button type="primary" onClick={onConfirm}>
           Confirm Changes
         </Button>

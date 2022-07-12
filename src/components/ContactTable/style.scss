@@ -8,3 +8,44 @@
 .expandableTable {
   padding: 0 0 30px;
 }
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  .avatar-name {
+    height: 50px;
+    width: 50px;
+    font-size: 10px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 767px) {
+    display: block;
+    width: 100%;
+  }
+  .container-align {
+    display: flex;
+    justify-content: space-between;
+  }
+  .contactCard {
+    @media (max-width: 767px) {
+      width: 320px;
+    }
+  }
+  .betsiteimage {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+  }
+  .edit-icon {
+    margin-top: 100px;
+  }
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
