@@ -161,7 +161,7 @@ const EditableTable: React.FC = () => {
   }, []);
 
   const handleDelete = (key) => {
-    setTableData(tableData.filter((item) => item.id !== key));
+    setTableData(tableData.filter((items) => items.id !== key));
   };
 
   const handleModal = (iDD) => {

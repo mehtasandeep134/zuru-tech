@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Card, Avatar } from 'antd';
 import Text from 'antd/lib/typography/Text';
 import Meta from 'antd/lib/card/Meta';
+import { avatarCapsProviders } from 'utils/helper';
 import { useCard } from './my-context';
 import './style.scss';
 
@@ -14,7 +15,7 @@ const ContactCard = () => {
           <Card className="contactCard">
             <div className="avatar">
               <Avatar className="avatar-name" size="large">
-                {selectedCard?.name ?? 'ZoHO'}
+                {avatarCapsProviders(selectedCard?.name) || 'Zuru'}
               </Avatar>
             </div>
             <div className="mt-15">
