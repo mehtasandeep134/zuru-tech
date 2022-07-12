@@ -27,6 +27,10 @@
   }
 }
 
+.slideWrapper {
+  margin-top: 5rem;
+}
+
 .logo {
   display: flex;
   justify-content: center;
@@ -34,7 +38,8 @@
   height: 32px;
   margin-top: 15px;
   img {
+    margin-top: 3rem;
     width: 40% !important;
-    height: 100% !important;
+    height: 5rem !important;
   }
 }

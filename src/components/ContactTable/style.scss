@@ -21,6 +21,7 @@
 
 .container {
   display: flex;
+  cursor: pointer;
   justify-content: space-between;
   @media (max-width: 767px) {
     display: block;

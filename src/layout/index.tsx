@@ -27,18 +27,20 @@ function MainLayout(props: any) {
         <div className="logo">
           <img src="/logo.jpeg" alt="logo" />
         </div>
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={[location.pathname ?? `Chat`]}
-          mode="inline"
-          onClick={handleMenuClick}
-        >
-          {StaticLabels.menuCards.map((items: any) => (
-            <Menu.Item key={items} icon={<PieChartOutlined />}>
-              {items}
-            </Menu.Item>
-          ))}
-        </Menu>
+        <div className="slideWrapper">
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={[location.pathname ?? `Chat`]}
+            mode="inline"
+            onClick={handleMenuClick}
+          >
+            {StaticLabels.menuCards.map((items: any) => (
+              <Menu.Item key={items} icon={<PieChartOutlined />}>
+                {items}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </div>
       </Sider>
       <Layout className={`site-content-wrapper ${collapsed ? 'ml-80' : 'ml-200'}`}>
         <Header className="site-header">{StaticLabels.header}</Header>
