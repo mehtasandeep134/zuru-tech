@@ -265,7 +265,7 @@ const EditableTable: React.FC = () => {
       />
       <div className="action-btn mt-15">
         <Button type="primary" onClick={onConfirm}>
-          Confirm Changes
+          Save
         </Button>
       </div>
     </div>
