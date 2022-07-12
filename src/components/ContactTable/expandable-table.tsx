@@ -1,47 +1,49 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Input, Table, Button, Popconfirm, Space } from 'antd';
+import { Input, Table, Button, Popconfirm, Space, Form } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { ColumnProps } from 'antd/lib/table';
 
+import { useCard } from './my-context';
 import Highlighter from 'react-highlight-words';
 import 'antd/dist/antd.css';
-import { useCard } from './my-context';
 
 interface IMyTableData {
-  id: string;
+  id: string | number;
   name: string;
   email: string;
   company: string;
   address: string;
+  editable?: boolean;
 }
 
 const dataSource: IMyTableData[] = [
   {
-    id: '1',
+    id: 1,
     name: 'Mo Salah',
     email: 'MoSalah@gmail.com',
     company: 'Zuru',
     address: '1 west side, New York, USA',
   },
   {
-    id: '2',
+    id: 2,
     name: 'Bobby Firmino',
     email: 'Bobby@gmail.com',
     company: 'BitOnTree',
     address: '2 west sside, Cali USA',
   },
   {
-    id: '3',
+    id: 3,
     name: 'Viral Firmino',
     email: 'Viral@gmail.com',
     company: 'Google',
     address: '3 west sside, Cali USA',
   },
   {
-    id: '4',
+    id: 4,
     name: 'Karan Firmino',
     email: 'Karan@gmail.com',
     company: 'Nasa',
@@ -55,6 +57,8 @@ const EditableTable: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [searchedColumn, setSearchedColumn] = useState('');
   const searchInput = React.useRef(null);
+  const EditableContext = React.createContext(null);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -184,9 +188,88 @@ const EditableTable: React.FC = () => {
     setTableData([...tableData, newData]);
   };
 
-  const onInputChange = (key, index) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  const EditableRow = ({ index, ...props }) => {
+    const [form] = Form.useForm();
+    return (
+      <Form form={form} component={false}>
+        <EditableContext.Provider value={form}>
+          <tr {...props} />
+        </EditableContext.Provider>
+      </Form>
+    );
+  };
+
+  const EditableCell = ({
+    title,
+    editable,
+    children,
+    dataIndex,
+    record,
+    handleSave,
+    ...restProps
+  }) => {
+    const [editing, setEditing] = useState(false);
+    const inputRef = React.useRef(null);
+    const form = React.useContext(EditableContext);
+    useEffect(() => {
+      if (editing) {
+        inputRef.current.focus();
+      }
+    }, [editing]);
+
+    const toggleEdit = () => {
+      setEditing(!editing);
+      form.setFieldsValue({
+        [dataIndex]: record[dataIndex],
+      });
+    };
+
+    const save = async () => {
+      try {
+        const values = await form.validateFields();
+        toggleEdit();
+        handleSave({ ...record, ...values });
+      } catch (errInfo) {
+        console.log('Save failed:', errInfo);
+      }
+    };
+
+    let childNode = children;
+
+    if (editable) {
+      childNode = editing ? (
+        <Form.Item
+          style={{
+            margin: 0,
+          }}
+          name={dataIndex}
+          rules={[
+            {
+              required: true,
+              message: `${title} is required.`,
+            },
+          ]}
+        >
+          <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+        </Form.Item>
+      ) : (
+        <div
+          className="editable-cell-value-wrap"
+          style={{
+            paddingRight: 24,
+          }}
+          onClick={toggleEdit}
+        >
+          {children}
+        </div>
+      );
+    }
+
+    return <td {...restProps}>{childNode}</td>;
+  };
+  const onInputChange = (id, index) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const newData = [...tableData];
-    newData[index][key] = Number(e.target.value);
+    newData[index][id] = Number(e.target.value);
     setTotal(newData, index);
     setTableData(newData);
   };
@@ -200,10 +283,11 @@ const EditableTable: React.FC = () => {
     localStorage.setItem('storedData', JSON.stringify(tableData));
   };
 
-  const columns: ColumnProps<IMyTableData>[] = [
+  const defaultColumns: any = [
     {
       dataIndex: 'name',
       title: 'Name',
+      editable: true,
       ...getColumnSearchProps('name'),
     },
     {
@@ -246,6 +330,38 @@ const EditableTable: React.FC = () => {
       handleModal(tableData);
     },
   };
+  const components = {
+    body: {
+      row: EditableRow,
+      cell: EditableCell,
+    },
+  };
+
+  const handleSave = (row) => {
+    const newData = [...dataSource];
+    console.log(row);
+    const index = newData.findIndex((item) => row.id === item.id);
+    const item = newData[index];
+    newData.splice(index, 1, { ...item, ...row });
+    setTableData(newData);
+  };
+
+  const columns = defaultColumns.map((col: any) => {
+    if (!col.editable) {
+      return col;
+    }
+
+    return {
+      ...col,
+      onCell: (record) => ({
+        record,
+        editable: col.editable,
+        dataIndex: col.dataIndex,
+        title: col.title,
+        handleSave,
+      }),
+    };
+  });
 
   return (
     <div style={{ padding: 20 }}>
@@ -255,6 +371,8 @@ const EditableTable: React.FC = () => {
       <Table
         rowKey="id"
         columns={columns}
+        components={components}
+        rowClassName={() => 'editable-row'}
         dataSource={tableData}
         pagination={false}
         rowSelection={rowSelection}

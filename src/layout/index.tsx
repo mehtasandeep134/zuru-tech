@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import StaticLabels from '../data/contacts.json';
 import './style.scss';
 
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 function MainLayout(props: any) {
   const location = useLocation();
@@ -43,8 +43,11 @@ function MainLayout(props: any) {
         </div>
       </Sider>
       <Layout className={`site-content-wrapper ${collapsed ? 'ml-80' : 'ml-200'}`}>
-        <Header className="site-header">{StaticLabels.header}</Header>
+        <Header className="site-header">
+          <h1>{StaticLabels.header}</h1>
+        </Header>
         <Content className="site-content">{renderRoutes(route.routes)}</Content>
+        <Footer>Double click on name to edit it * * *</Footer>
       </Layout>
     </Layout>
   );
